@@ -16,7 +16,7 @@ public class Tile implements Serializable {
     }
     public Tile(){
         // Will randomly set the color and shape codes.
-        setRandomly();
+        // setRandomly();
     }
     // Getters and setters for the Tile class.
     public int getColor() {

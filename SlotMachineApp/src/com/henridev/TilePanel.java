@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,8 +17,8 @@ public class TilePanel extends JPanel implements MouseListener, MouseMotionListe
     private ArrayList<Tile> tiles; // Will hold 4 total Tile objects initially added in the constructor.
 
     /**
-     * TilePanel constructor will take care of initializing the tiles ArrayList, adding 4 Tiles to the ArrayList and
-     * add the mouseListener to read from the JPanel.
+     * TilePanel constructor will take care of initializing the tiles ArrayList, adding 4 Tiles to the ArrayList,
+     * add the mouseListener, and initialize TileRandomizer instance to set tiles randomly on initial start.
      */
     public TilePanel(){
         addMouseListener(this);
@@ -31,6 +32,8 @@ public class TilePanel extends JPanel implements MouseListener, MouseMotionListe
         tiles.add(tile2);
         tiles.add(tile3);
         tiles.add(tile4);
+        TileRandomizer tileRandomizer = new TileRandomizer();
+        tileRandomizer.randomizeTiles(tiles);
     }
 
     /**
@@ -57,7 +60,6 @@ public class TilePanel extends JPanel implements MouseListener, MouseMotionListe
     }
     @Override
     public void paintComponent(Graphics g) {
-
         super.paintComponent(g);
         // Iterate over each Tile from the tile ArrayList.
         for(int i = 0; i < tiles.size(); i++){
@@ -69,7 +71,7 @@ public class TilePanel extends JPanel implements MouseListener, MouseMotionListe
             }else if(tiles.get(i).getColor() == 2){
                 g.setColor(Color.RED);
             }else if(tiles.get(i).getColor() == 3){
-                g.setColor(Color.RED);
+                g.setColor(Color.GREEN);
             }else if(tiles.get(i).getColor() == 4){
                 g.setColor(Color.YELLOW);
             }
